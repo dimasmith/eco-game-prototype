@@ -16,36 +16,48 @@
     </head>
     <body>
 
-        <div class="game-screen">
-            <div class="score-bar well">
-                Step: 
-                <span class="game-move-number badge"></span>
-                <ul>
-                    <li title="Money"><span class="glyphicon glyphicon-usd"></span> 
-                        <span class="game-state-money badge"></span></li>
-                    <li title="Energy"><span class="glyphicon glyphicon-flash"></span> 
-                        <span class="game-state-energy badge"></span></li>
-                    <li title="Water"><span class="glyphicon glyphicon-tint"></span> 
-                        <span class="game-state-water badge"></span></li>
-                    <li title="Food"><span class="glyphicon glyphicon-cutlery"></span> 
-                        <span class="game-state-food badge"></span></li>
-                    <li title="Dioxide"><span class="glyphicon glyphicon-cloud"></span> 
-                        <span class="game-state-dioxide badge"></span></li>
-                </ul>
+        <div class="game-screen container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="score-bar well">
+                        Step: 
+                        <span class="game-move-number badge"></span>
+                        <ul>
+                            <li title="Money"><span class="glyphicon glyphicon-usd"></span> 
+                                <span class="game-state-money badge"></span></li>
+                            <li title="Energy"><span class="glyphicon glyphicon-flash"></span> 
+                                <span class="game-state-energy badge"></span></li>
+                            <li title="Water"><span class="glyphicon glyphicon-tint"></span> 
+                                <span class="game-state-water badge"></span></li>
+                            <li title="Food"><span class="glyphicon glyphicon-cutlery"></span> 
+                                <span class="game-state-food badge"></span></li>
+                            <li title="Dioxide"><span class="glyphicon glyphicon-cloud"></span> 
+                                <span class="game-state-dioxide badge"></span></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-
-            <div class="well col-md-6">
-                <h3>Available cards</h3>
-                <div class="game-available-cards"></div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="well"> 
+                        <h3>Available cards</h3>
+                        <div class="game-available-cards"></div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="well">
+                        <h3>Cards in use</h3>
+                        <div class="game-cards-on-hands"></div>
+                    </div>
+                </div>
             </div>
-            
-            <div class="well col-md-6">
-                <h3>Cards in use</h3>
-                <div class="game-cards-on-hands"></div>
-            </div>
-
-            <div class="controls">
-                <button class="game-move-complete btn btn-primary btn-large">Complete move</button>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="controls">
+                        <button class="game-move-complete btn btn-primary btn-large">Complete move</button>
+                    </div>
+                </div>
             </div>
             
             <div class="game-disaster notification">
