@@ -2,16 +2,20 @@ function Card(card) {
     this.name = function() {
         return card.name;
     };
-
+    
+    this.digitalEffect = card.effect; 
+    
     this.description = function() {
         return card.description;
     };
 
     this.effect = function(game) {
-        card.effect.call(card, game);
+        for (var r in card.effect) {
+            game.resources[r] = (card.effect[r] < 1 && card.effect[r] > 0) ? game.resources[r] * card.effect[r] : game.resources[r] + card.effect[r];
+        }
     };
 }
-;
+
 
 function Deck() {
     var cards = new Array();

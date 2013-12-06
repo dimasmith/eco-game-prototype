@@ -63,9 +63,21 @@ function View(game) {
     };
     
     var renderCard = function(card){
-        var template = $($("#card-template").html()).clone();
+        var template = $($("#card-template").html()).clone(), barName, summaryBars = '', percent, itemGraph, effectTemplate;
         $(".card-name", template).text(card.name());
         $(".card-description", template).text(card.description());
+        console.log('---');
+        for (var r in card.digitalEffect) {
+            effectTemplate = $($("#card-effects").html()).clone();
+            barName = (
+                (card.digitalEffect[r] > 0 && card.digitalEffect[r] < 1) ||
+                (card.digitalEffect[r] < 0)
+            ) ? 'bar-1' : 'bar-2';
+            percent = Math.abs(card.digitalEffect[r] / game.resources[r] * 100);
+            $("." + barName + " div", effectTemplate).css("width", percent + "%");
+            $(".card-effect", template).append(effectTemplate);
+        }
+        
         template.data("card", card);
         return template;
     }

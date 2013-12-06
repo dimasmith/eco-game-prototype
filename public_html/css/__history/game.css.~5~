@@ -84,12 +84,12 @@ body {
 }
 
 /*Card Progress*/
-.w45 {
+.w45, .w45 div {
 	width: 45%;
 	height: 10px;
 }
 .w45 div {
-	height: 10px;
+	width: 0;
 }
 .w10 {
 	width: 10%;

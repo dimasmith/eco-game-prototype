@@ -88,9 +88,6 @@ body {
 	width: 45%;
 	height: 10px;
 }
-.w45 div {
-	height: 10px;
-}
 .w10 {
 	width: 10%;
 }
