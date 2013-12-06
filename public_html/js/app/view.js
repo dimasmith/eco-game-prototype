@@ -74,6 +74,8 @@ function View(game) {
                 (card.digitalEffect[r] < 0)
             ) ? 'bar-1' : 'bar-2';
             percent = Math.abs(card.digitalEffect[r] / game.resources[r] * 100);
+            console.log(game.glyphicons[r]);
+            $(".glyphicon", effectTemplate).addClass(game.glyphicons[r]);
             $("." + barName + " div", effectTemplate).css("width", percent + "%");
             $(".card-effect", template).append(effectTemplate);
         }

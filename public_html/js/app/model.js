@@ -114,8 +114,14 @@ function Game(options) {
         food: 1000,
         dioxide: 100
     };
-
-
+    
+    this.glyphicons = {
+        money: "glyphicon-usd",
+        energy: "glyphicon-flash",
+        water: "glyphicon-tint",
+        food: "glyphicon-cutlery",
+        dioxide: "glyphicon-cloud"
+    }
 
     this.start = function() {
         move = new Move();
