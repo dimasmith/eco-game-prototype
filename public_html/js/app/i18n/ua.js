@@ -1,4 +1,4 @@
-(function(){
+define(["app/i18n"], function(translator){
     translator.registerTranslations({
         locale: "uk",
         "Modernize Manufacturing": "Модернізувати виробництво",
@@ -20,6 +20,5 @@
         "Food":"Їжа",
         "Dioxide":"CO²"
     });
-})();
-
+});
 
