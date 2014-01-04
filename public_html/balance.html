@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Game Balance</title>
+        <meta name="viewport" content="width=device-width">
+        <script src="js/libs/require.js" data-main="js/balance/config.js"></script>
+        <script src="http://localhost:35729/livereload.js"></script>
+        <style type="text/css">
+        .warning { background-color: #cc0000;}
+        </style>
+	</head>
+	<body>
+		<table id="deviations">
+			<thead>
+				<tr>
+					<th>Card</th>
+						<th>Money</th>
+						<th>Food</th>
+						<th>Energy</th>
+						<th>Water</th>
+						<th>Dioxide</th>
+					</tr>
+			</thead>
+			<tfoot>
+				<tr>
+					<td>Total:</td>
+					<td class="total-money"></td>
+					<td class="total-food"></td>
+					<td class="total-energy"></td>
+					<td class="total-water"></td>
+					<td class="total-dioxide"></td>
+				</tr>
+			</tfoot>
+			<tbody>
+				
+			</tbody>
+		</table>
+
+		
+		<script type="text/template" id="deviations-row-template">
+		<tr>
+			<td class="deviations-card-name"></td>
+			<td class="deviations-money"></td>
+			<td class="deviations-food"></td>
+			<td class="deviations-energy"></td>
+			<td class="deviations-water"></td>
+			<td class="deviations-dioxide"></td>
+		</tr>
+		</script>
+	</body>
+</html>
