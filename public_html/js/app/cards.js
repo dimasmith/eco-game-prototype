@@ -123,7 +123,7 @@ define(["app/model", "app/i18n"], function(model, translator) {
             name: t("Ensure the use of biogas from garbage"),
             description: "",
             resources:  {
-                money : -200,
+                money : -300,
                 energy : 250,
                 dioxide : -25
             }

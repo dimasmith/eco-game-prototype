@@ -13,12 +13,16 @@ requirejs.config({
         },
         "bootstrap": {
             deps: ["jquery"]
+        },
+        "underscore": {
+            exports: "_"
         }
         
     }
 });
 
-requirejs(["balance/view"], function(view){
+requirejs(["balance/view", "balance/autoplay"], function(view, autoplay){
    view.render();
+   autoplay.play();
 });
 

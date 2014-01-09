@@ -11,9 +11,10 @@ for (var file in window.__karma__.files) {
 }
 
 requirejs.config({
-    baseUrl: "/base/js/libs",
+    baseUrl: "/base/public_html/js/libs",
     paths: {
-        app: "../../public_html/js/app"
+        app: "../../js/app",
+        balance: "../../js/balance"
     },
     shim: {
         "jquery": {
@@ -21,6 +22,9 @@ requirejs.config({
         },
         "bootstrap": {
             deps: ["jquery"]
+        },
+        "underscore": {
+            exports: "_"
         }
         
     },
