@@ -3,6 +3,7 @@ define(["app/cards", "underscore"], function(cards, _){
 	function Calculator(){
 		var waistableResources = ["money", "energy", "water", "food"];
 		var resourceNames = ["money", "energy", "water", "food", "dioxide"];
+		var self = this;
 
 		this.deficiteResources = function(resources){
 			return _.chain(resources)
@@ -13,6 +14,14 @@ define(["app/cards", "underscore"], function(cards, _){
 				}).filter(function(val){
 					return val.value <= 0;
 				}).value();
+		};
+
+		this.applyCards = function(cards, resources){
+			var r = _.clone(resources);
+			_.each(cards, function(card){
+				r = self.applyCard(card, r);				
+			});
+			return r;
 		}
 
 		this.applyCard = function(card, resources){			
@@ -21,27 +30,19 @@ define(["app/cards", "underscore"], function(cards, _){
 				r[name] = value + card.effectFor(name).value();
 			});
 			return r;
-		}
+		};
+
+		this.sortCards = function(cards){
+			return _.sortBy(cards, function(card){
+				return card.effectFor("dioxide").value();				
+			});
+		};
 	}
 
 	function Autoplay(){
-		
-		var waistableResources = ["money", "energy", "water", "food"];
-		var resourceNames = ["money", "energy", "water", "food", "dioxide"];
 
-		function deficiteResources(resources){
-			return _.chain(resources)
-				.map(function(value, name){
-					return {name: name, value: value};
-				}).reject(function(val){
-					return val.name === "dioxide";
-				}).filter(function(val){
-					return val.value <= 0;
-				}).value();
-		}
+		this.play = function(resources, cards){
 
-		this.play = function(){
-			console.log(deficiteResources({ money: -100, energy: 100, water: 100, food: 100, dioxide: 100 }));
 		}
 	}
 
