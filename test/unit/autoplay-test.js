@@ -134,7 +134,46 @@ define(["app/model", "balance/autoplay"], function(model, Play){
 										cards.mediumDioxide, 
 										cards.highestDioxide]);
 			});
-		});
+		});		
 		
+	});
+
+	describe("multidimensional index", function(){
+		var index;
+		var batchSize = 3;
+		var arraySize = 5;
+
+		beforeEach(function(){
+			index = new Play.IterationIndex(batchSize, arraySize);
+		});
+
+		it("cannot increment when not reached end of iteration", function(){			
+			expect(index.hasNext()).toBe(true);
+		});
+
+		it("cannot increment when reached end of iteration", function(){
+			index.state([2,3,4]);
+			expect(index.hasNext()).toBe(false);
+		});
+
+		it("increment last index only when no carry needed", function(){
+			expect(index.increment().state()).toEqual([0,1,3]);
+		});
+
+		it("increment two indices when single carry needed", function(){
+			index.state([0,1,4]);
+			expect(index.increment().state()).toEqual([0,2,3]);
+		});
+
+		it("increment all indices when many carries needed", function(){
+			index.state([0,3,4]);
+			expect(index.increment().state()).toEqual([1,2,3]);
+		});
+
+		it("dummy dump", function(){
+			while(index.hasNext()){
+				dump(index.increment().state());
+			}
+		});
 	});
 })

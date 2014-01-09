@@ -37,6 +37,45 @@ define(["app/cards", "underscore"], function(cards, _){
 				return card.effectFor("dioxide").value();				
 			});
 		};
+
+	}
+
+	function IterationIndex(batchSize, arraySize){
+		var _state = [];
+		for(var i = 0; i < batchSize; i++){
+			_state[i] = i;
+		}
+
+		this.state = function(newState){
+			if(newState){
+				_state = newState;
+			}
+			return _.clone(_state);
+		}
+
+		this.hasNext = function(){
+			return _.reduce(_state, function(next, value, index){
+				return next || (value < maxValue(index));
+			}, false);			
+		}
+
+		this.increment = function(){
+			doIncrement(batchSize - 1);
+			return this;
+		}
+
+		function maxValue(index){
+			return arraySize - batchSize + index;
+		}
+
+		function doIncrement(index){
+			if(_state[index] < maxValue(index)){
+				_state[index] += 1;
+			} else {
+				doIncrement(index - 1);
+				_state[index] = _state[index - 1] + 1;
+			}
+		}
 	}
 
 	function Autoplay(){
@@ -46,6 +85,9 @@ define(["app/cards", "underscore"], function(cards, _){
 		}
 	}
 
-	return {player: new Autoplay(), Calculator: Calculator};
+	return {
+		player: new Autoplay(), 
+		Calculator: Calculator, 
+		IterationIndex: IterationIndex };
 
 })
