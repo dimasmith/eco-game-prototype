@@ -18,15 +18,14 @@ define(["jquery"], function($) {
         };
 
         this.renderMoveNumber = function() {
-            $(".game-move-number").text(game.moveNumber());
+            $(".game-move-number").removeClass('active').eq(game.moveNumber() - 1).addClass('active');
         };
 
         this.renderResources = function() {
-            $(".game-state-money").text(game.resources.money);
-            $(".game-state-energy").text(game.resources.energy);
-            $(".game-state-food").text(game.resources.food);
-            $(".game-state-water").text(game.resources.water);
-            $(".game-state-dioxide").text(game.resources.dioxide);
+            //['money', 'energy', 'food', 'water', 'dioxide'] => game.availableResources()
+            $.each(['money', 'energy', 'food', 'water', 'dioxide'], function(index, resource){
+                $(".game-state-" + resource).text(game.resources[resource]);
+            });
         };
 
         this.renderCards = function() {
@@ -103,10 +102,11 @@ define(["jquery"], function($) {
             var resultText;
             var resultClass;
             if (event.result === "lose") {
-                resultText = "You lost";
+                resultText = t("You lost");
                 resultClass = "alert-danger";
             } else {
-                resultText = "You won!!!";
+                console.log(t("You won!!!"), "You won!!!");
+                resultText = t("You won!!!");
                 resultClass = "alert-success";
             }
             $(".game-result").text(resultText).addClass(resultClass);

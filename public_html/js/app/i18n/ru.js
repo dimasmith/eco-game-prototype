@@ -47,7 +47,10 @@ define(["app/i18n"], function(translator) {
         "Food": "Пища",
         "Dioxide": "CO²",
         "You cannot take more than":"Ви не можете взяти больше чем",
-        "cards":"карт"
+        "cards":"карт",
+	"You lost":"Ви проиграли",
+	"You won!!!":"Ви выиграли!"
+
     });
 });
 

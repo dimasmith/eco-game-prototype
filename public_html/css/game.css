@@ -163,6 +163,9 @@ body {
 .rating-desc .progress .progress-bar { width: 100%;}
 /*  End Of NewCards  */
 
+.game-move-number.badge.active {
+	background-color: #428BCA;
+}
 
 /*Temporary hide description, until delete it from function*/
 .card-description {

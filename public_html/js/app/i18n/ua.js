@@ -47,7 +47,9 @@ define(["app/i18n"], function(translator){
         "Food":"Їжа",
         "Dioxide":"CO²",
         "You cannot take more than":"Ви не можете взяти більше ніж",
-        "cards":"карток"
+        "cards":"карток",
+	"You lost":"Ви програли",
+	"You won!!!":"Ви перемогли!"
     });
 });
 
