@@ -29,7 +29,6 @@ define(["app/model", "app/view", "app/rules", "app/disasters", "app/cards", "app
             }
 
             $(document).ready(function() {
-
                 translator.translateUI();
                 var game = new model.Game({
                     rules: rules,
@@ -37,10 +36,20 @@ define(["app/model", "app/view", "app/rules", "app/disasters", "app/cards", "app
                     disasters: disasters
                 });
 
+                var welcome = new view.Welcome();
+
                 var v = new view.View(game);
                 
                 game.addListener(new GameListener(v));
-                game.start();
+                $('.start-game').on('click', function(){
+                    if ($('.username input').val() != '' && $('.select-avatar .avatar.active').length) {
+                        $('.user-info .user-name span.name').html($('.username input').val());
+                        
+                        game.start();
+                        $('.welcome-screen').hide();
+                        $('.game-screen').show();   
+                    }
+                });
             });
 
         }

@@ -10,29 +10,105 @@
         
         <script data-main="js/config.js" src="js/libs/require.js"></script>        
     </head>
-    <body>        
-        <div class="game-screen">
+    <body>
+        <div class="welcome-screen clearfix col-xs-12">
+            <div class="well">
+                
+                <div class="select-avatar row">
+                    <div class="col-xs-6 col-sm-4 col-md-2"><div class="avatar av-1" data-avatar="av-1"></div></div>
+                    <div class="col-xs-6 col-sm-4 col-md-2"><div class="avatar av-2" data-avatar="av-2"></div></div>
+                    <div class="col-xs-6 col-sm-4 col-md-2"><div class="avatar av-3" data-avatar="av-3"></div></div>
+                    <div class="col-xs-6 col-sm-4 col-md-2"><div class="avatar av-4" data-avatar="av-4"></div></div>
+                    <div class="col-xs-6 col-sm-4 col-md-2"><div class="avatar av-5" data-avatar="av-5"></div></div>
+                    <div class="col-xs-6 col-sm-4 col-md-2"><div class="avatar av-6" data-avatar="av-6"></div></div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-xs-12 col-sm-4">
+                        <div class="input-group username">
+                          <span class="input-group-addon">@</span>
+                          <input type="text" class="form-control" placeholder="Введіть Ваше ім'я">
+                        </div>
+                    </div>
+                    
+                    <div class="col-xs-6 col-sm-4">
+                        <div class="dropdown select-country controls">
+                          <button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                            <span class="i18n">Select country</span>
+                            <span class="caret"></span>
+                          </button>
+                          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="flag uk"></span><span class="i18n">Ukraine</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="flag ru"></span><span class="i18n">Russia</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="flag pl"></span><span class="i18n">Poland</span></a></li>
+                          </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="col-xs-6 col-sm-4">
+                        <div class="controls">
+                            <button type="button" class="btn btn-primary start-game i18n">Start Game</button>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="row">
+                <div class="col-xs-12"><img src="static/images/logo.jpg" class="center-block img-responsive" width="390" height="390" /></div>
+            </div>
+        </div>    
+        <div class="game-screen clearfix">
             <div class="score-bar well">
-                <div class="col-lg-5 col-md-6 col-sm-8 col-xs-9">
+                <div class="col-lg-5 col-md-5 col-sm-8 col-xs-9">
                     <span class="i18n">Step: </span>
-                    <span class="game-move-number badge"></span>
+                    <span class="game-move-number badge">1</span>
+                    <span class="game-move-number badge">2</span>
+                    <span class="game-move-number badge">3</span>
+                    <span class="game-move-number badge">4</span>
+                    <span class="game-move-number badge">5</span>
+                    
                     <ul>
-                        <li title="Money" class="i18n-title"><span class="glyphicon glyphicon-usd"></span> 
+                        <li title="Money" class="i18n-title score-item"><span class="glyphicon glyphicon-usd"></span> 
                             <span class="game-state-money badge"></span></li>
-                        <li title="Energy" class="i18n-title"><span class="glyphicon glyphicon-flash"></span> 
+                        <li title="Energy" class="i18n-title score-item"><span class="glyphicon glyphicon-flash"></span> 
                             <span class="game-state-energy badge"></span></li>
-                        <li title="Water" class="i18n-title"><span class="glyphicon glyphicon-tint"></span> 
+                        <li title="Water" class="i18n-title score-item"><span class="glyphicon glyphicon-tint"></span> 
                             <span class="game-state-water badge"></span></li>
-                        <li title="Food" class="i18n-title"><span class="glyphicon glyphicon-cutlery"></span> 
+                        <li title="Food" class="i18n-title score-item"><span class="glyphicon glyphicon-cutlery"></span> 
                             <span class="game-state-food badge"></span></li>
-                        <li title="Dioxide" class="i18n-title"><span class="glyphicon glyphicon-cloud"></span> 
+                        <li title="Dioxide" class="i18n-title score-item"><span class="glyphicon glyphicon-cloud"></span> 
                             <span class="game-state-dioxide badge"></span></li>
                     </ul>
                 </div>
-                <div class="controls col-lg-2 col-md-6 col-sm-4 col-xs-3">
+                <div class="controls col-lg-2 col-md-2 col-sm-4 col-xs-3">
                     <button class="game-move-complete btn btn-primary btn-lg i18n">Complete move</button>
                 </div>
-                <div class="col-lg-5 col-md-12 col-sm-12"></div>
+                <div class="col-lg-5 col-md-5 col-sm-12">
+                    <div class="row user-info">
+                        <div class="col-xs-9">
+                            <div class="row">
+                                <nav class="col-xs-12">
+                                    <ul class="nav nav-pills pull-right">
+                                      <li><a href="index.html">Home</a></li>
+                                      <li><a href="static/resources/rules_uk.htm" data-toggle="modal" data-target="#modalWindow" class="i18n">Rules</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div class="row">
+                                <div class="user-info col-xs-12">
+                                    <div class="country pull-right"></div>
+                                    <div class="user-name pull-right">
+                                        <span class="glyphicon glyphicon-user"></span>
+                                        <span class="name"></span>
+                                    </div>
+                                </div>
+                            
+                            </div>
+                        </div>
+                        <div class="col-xs-3"><div class="avatar"></div></div>
+                    </div>
+                        
+                </div>
                 <div class="clear"></div>
             </div>
             
@@ -43,14 +119,18 @@
                 <span class="game-disaster-description"></span>
             </div>            
 
-            <div class="well col-md-6 col-sm-6">
-                <h3 class="i18n">Available cards</h3>
-                <div class="game-available-cards"></div>
+            <div class="col-md-6 col-sm-6">
+                <div class="well clearfix">
+                    <h3 class="i18n">Available cards</h3>
+                    <div class="game-available-cards"></div>
+                </div>
             </div>
             
-            <div class="well col-md-6 col-sm-6">
-                <h3 class="i18n">Cards in use</h3>
-                <div class="game-cards-on-hands"></div>
+            <div class="col-md-6 col-sm-6">
+                <div class="well clearfix">
+                    <h3 class="i18n">Cards in use</h3>
+                    <div class="game-cards-on-hands"></div>
+                </div>
             </div>
 
         </div>
@@ -58,7 +138,7 @@
         <div class="hidden game-result-screen">
             <div class="game-over jumbotron">
                 <h1 class="i18n">Game Over</h1>
-                <h1 class="game-result alert"></h1>
+                <h1 class="game-result alert i18n"></h1>
                 <p class="game-result-reason alert"></p>
                 <button class="game-restart btn btn-primary btn-large i18n" onclick="javascript:document.location.reload();">Restart Game</button>
             </div>
@@ -125,6 +205,8 @@
                         </div>
                     </div>
         </script>
-
+        <div class="modal fade" id="modalWindow" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+          
+        </div>
     </body>
 </html>
