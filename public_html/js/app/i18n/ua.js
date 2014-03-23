@@ -47,7 +47,24 @@ define(["app/i18n"], function(translator){
         "Food":"Їжа",
         "Dioxide":"CO²",
         "You cannot take more than":"Ви не можете взяти більше ніж",
-        "cards":"карток"
+        "cards":"карток",
+	    "You lost":"Ви програли",
+	    "You won!!!":"Ви перемогли!",
+        "Rules":"Правила",
+        "Rules of Game":"Правила гри",
+        "Start Game":"Старт гри",
+        "Сlimate Change":"Зміна клімату",
+        "Vocabulary":"Словник",
+        "Select region":"Оберіть регіон",
+        "Australia":"Австралія",
+        "Asia":"Азія",
+        "Africa":"Африка",
+        "Europe":"Європа",
+        "North America":"Північна Америка",
+        "South America":"Південна Америка",
+        "Home":"На початок",
+        "Start Game":"Початок гри",
+        "Created by":"Розробка:"
     });
 });
 

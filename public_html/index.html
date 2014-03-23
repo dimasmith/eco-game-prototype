@@ -10,47 +10,162 @@
         
         <script data-main="js/config.js" src="js/libs/require.js"></script>        
     </head>
-    <body>        
-        <div class="game-screen">
+    <body>
+        <div class="welcome-screen clearfix col-xs-12">
+            <div class="well preload" id="starting">
+                
+                <div class="row">
+                    <div class="select-avatar col-sm-6">
+                    <div class="row">
+                        <div class="col-xs-12 controls"><h4 class="i18n">Start Game</h4></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4"><div class="avatar av-1" data-avatar="av-1"></div></div>
+                        <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4"><div class="avatar av-2" data-avatar="av-2"></div></div>
+                        <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4"><div class="avatar av-3" data-avatar="av-3"></div></div>
+                        <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4"><div class="avatar av-4" data-avatar="av-4"></div></div>
+                        <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4"><div class="avatar av-5" data-avatar="av-5"></div></div>
+                        <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4"><div class="avatar av-6" data-avatar="av-6"></div></div>
+                    </div>
+                        
+                        <div class="row">
+                            
+                            <div class="col-md-4 col-sm-12">
+                                <div class="input-group username">
+                                  <span class="input-group-addon">@</span>
+                                  <input type="text" class="form-control" placeholder="Ім'я">
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-xs-6">
+                                <div class="controls">
+                                    <div class="dropdown select-country controls">
+                                      <button class="btn dropdown-toggle btn-default" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                                        <span class="i18n">Select region</span>
+                                        <span class="caret"></span>
+                                      </button>
+                                      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="i18n">Australia</span></a></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="i18n">Asia</span></a></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="i18n">Africa</span></a></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="i18n">Europe</span></a></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="i18n">North America</span></a></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="i18n">South America</span></a></li>
+                                      </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-4 col-xs-6">
+                                <div class="controls">
+                                    <button type="button" class="btn btn-primary start-game i18n disabled">Start Game</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">                            
+                            <div class="col-xs-12">
+                                <div class="controls">
+                                    <a href="static/resources/rules_uk.htm" data-toggle="modal" data-target="#modalWindowrules" class="i18n btn btn-default">Rules of Game</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-xs-12"><img src="static/images/logo.jpg" class="center-block img-responsive" width="390" height="390" /></div>
+                        </div>
+                        <div class="row">                            
+                            <div class="col-xs-6">
+                                <div class="controls">
+                                    <a href="static/resources/climat_uk.htm" data-toggle="modal" data-target="#modalWindowclimate" class="i18n btn btn-default">Сlimate Change</a>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="controls">
+                                    <a href="static/resources/vocabulary_uk.htm" data-toggle="modal" data-target="#modalWindowvoc" class="i18n btn btn-default">Vocabulary</a>
+                                </div>
+                            </div>
+                        </div>                
+                    </div>
+                </div>
+                
+                
+            </div>
+            
+            
+        </div>    
+        <div class="game-screen clearfix">
             <div class="score-bar well">
-                <div class="col-lg-5 col-md-6 col-sm-8 col-xs-9">
+                <div class="col-lg-5 col-md-5 col-sm-8 col-xs-9">
                     <span class="i18n">Step: </span>
-                    <span class="game-move-number badge"></span>
+                    <span class="game-move-number badge">1</span>
+                    <span class="game-move-number badge">2</span>
+                    <span class="game-move-number badge">3</span>
+                    <span class="game-move-number badge">4</span>
+                    <span class="game-move-number badge">5</span>
+                    
                     <ul>
-                        <li title="Money" class="i18n-title"><span class="glyphicon glyphicon-usd"></span> 
+                        <li title="Money" class="i18n-title score-item"><span class="glyphicon glyphicon-usd"></span> 
                             <span class="game-state-money badge"></span></li>
-                        <li title="Energy" class="i18n-title"><span class="glyphicon glyphicon-flash"></span> 
+                        <li title="Energy" class="i18n-title score-item"><span class="glyphicon glyphicon-flash"></span> 
                             <span class="game-state-energy badge"></span></li>
-                        <li title="Water" class="i18n-title"><span class="glyphicon glyphicon-tint"></span> 
+                        <li title="Water" class="i18n-title score-item"><span class="glyphicon glyphicon-tint"></span> 
                             <span class="game-state-water badge"></span></li>
-                        <li title="Food" class="i18n-title"><span class="glyphicon glyphicon-cutlery"></span> 
+                        <li title="Food" class="i18n-title score-item"><span class="glyphicon glyphicon-cutlery"></span> 
                             <span class="game-state-food badge"></span></li>
-                        <li title="Dioxide" class="i18n-title"><span class="glyphicon glyphicon-cloud"></span> 
+                        <li title="Dioxide" class="i18n-title score-item"><span class="glyphicon glyphicon-cloud"></span> 
                             <span class="game-state-dioxide badge"></span></li>
                     </ul>
                 </div>
-                <div class="controls col-lg-2 col-md-6 col-sm-4 col-xs-3">
+                <div class="controls col-lg-2 col-md-2 col-sm-4 col-xs-3">
                     <button class="game-move-complete btn btn-primary btn-lg i18n">Complete move</button>
                 </div>
-                <div class="col-lg-5 col-md-12 col-sm-12"></div>
+                <div class="col-lg-5 col-md-5 col-sm-12">
+                    <div class="row user-info">
+                        <div class="col-xs-9">
+                            <div class="row">
+                                <nav class="col-xs-12">
+                                    <ul class="nav nav-pills pull-right">
+                                      <li><a href="index.html" class="i18n">Home</a></li>
+                                      <li><a href="static/resources/rules_uk.htm" data-toggle="modal" data-target="#modalWindowrules" class="i18n">Rules</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div class="row">
+                                <div class="user-info col-xs-12">
+                                    <div class="user-name pull-right">
+                                        <span class="glyphicon glyphicon-user"></span>
+                                        <span class="name"></span>
+                                    </div>
+                                </div>
+                            
+                            </div>
+                        </div>
+                        <div class="col-xs-3"><div class="avatar"></div></div>
+                    </div>
+                        
+                </div>
                 <div class="clear"></div>
             </div>
             
-            <div class="game-alert notification"></div>
+            <div class="game-alert notification alert container"></div>
             
             <div class="game-disaster notification alert">
                 <h2 class="game-disaster-name"></h2>
                 <span class="game-disaster-description"></span>
             </div>            
 
-            <div class="well col-md-6 col-sm-6">
-                <h3 class="i18n">Available cards</h3>
-                <div class="game-available-cards"></div>
+            <div class="col-md-6 col-sm-6">
+                <div class="well clearfix">
+                    <h3 class="i18n">Available cards</h3>
+                    <div class="game-available-cards"></div>
+                </div>
             </div>
             
-            <div class="well col-md-6 col-sm-6">
-                <h3 class="i18n">Cards in use</h3>
-                <div class="game-cards-on-hands"></div>
+            <div class="col-md-6 col-sm-6">
+                <div class="well clearfix">
+                    <h3 class="i18n">Cards in use</h3>
+                    <div class="game-cards-on-hands"></div>
+                </div>
             </div>
 
         </div>
@@ -58,11 +173,37 @@
         <div class="hidden game-result-screen">
             <div class="game-over jumbotron">
                 <h1 class="i18n">Game Over</h1>
-                <h1 class="game-result alert"></h1>
+                <h1 class="game-result alert i18n"></h1>
                 <p class="game-result-reason alert"></p>
                 <button class="game-restart btn btn-primary btn-large i18n" onclick="javascript:document.location.reload();">Restart Game</button>
             </div>
         </div>
+        
+        <footer class="col-xs-12"><div class="well"><div class="center-block foot-logos">
+         <div class="row">
+            <div class="col-xs-3"><div class="row">
+                <div class="col-xs-6"><img src="static/images/logo_01.jpg" class="img-responsive foot-logo center-block" /></div>
+                <div class="col-xs-6"><img src="static/images/logo_02.jpg" class="img-responsive foot-logo center-block" /></div>
+            </div></div>
+            <div class="col-xs-3"><div class="row">
+                <div class="col-xs-6"><img src="static/images/logo_03.jpg" class="img-responsive foot-logo center-block" /></div>
+                <div class="col-xs-6"><img src="static/images/logo_04.jpg" class="img-responsive foot-logo center-block" /></div>
+            </div></div>
+            <div class="col-xs-3"><div class="row">
+                <div class="col-xs-6"><img src="static/images/logo_05.jpg" class="img-responsive foot-logo center-block" /></div>
+                <div class="col-xs-6"><img src="static/images/logo_06.jpg" class="img-responsive foot-logo center-block" /></div>
+            </div></div>
+            <div class="col-xs-3"><div class="row">
+                <div class="col-xs-6"><img src="static/images/logo_07.jpg" class="img-responsive foot-logo center-block" /></div>
+                <div class="col-xs-6"><img src="static/images/logo_08.jpg" class="img-responsive foot-logo center-block" /></div>
+            </div></div>
+         </div>
+         <div class="row copyright">
+            <div class="col-xs-12 controls">
+                <span class="i18n">Created by</span> <a href="http://divilon.com" target="_blank" title="IT-Studio Divilon">Divilon</a>
+            </div>
+         </div>
+        </div></div></footer>
 
         <script id="card-template" type="text/html">
                     <div class="card col-xs-12 col-md-12 col-lg-6 well well-sm">
@@ -125,6 +266,8 @@
                         </div>
                     </div>
         </script>
-
+        <div class="modal fade" id="modalWindowrules" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true"></div>
+        <div class="modal fade" id="modalWindowclimate" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true"></div>
+        <div class="modal fade" id="modalWindowvoc" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true"></div>
     </body>
 </html>

@@ -3,10 +3,19 @@ define(["app/model"], function(model) {
         dioxideBelowThresholdRule: new model.Rule({
             threshold: 1,
             condition: function(game) {
-                return game.resources.dioxide <= this.threshold;
+                //must make 5 steps, winn if end of game deoxide less trashold
+                return game.moveNumber() > 4 && game.resources.dioxide <= this.threshold;
             },
             effect: function(game) {
                 game.win(t("You dioxide level is below ") + this.threshold);
+            }}),
+        dioxideUpperThresholdRule: new model.Rule({
+            maxlevel: 50,
+            condition: function(game) {
+                return game.resources.dioxide > this.maxlevel;
+            },
+            effect: function(game) {
+                game.lose(t("You dioxide level is high ") + this.maxlevel);
             }}),
         lackOfResourcesLosesGame: new model.Rule({
             condition: function(game) {

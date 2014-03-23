@@ -1,5 +1,22 @@
 define(["jquery"], function($) {
     
+    function Welcome(player) {
+        var self = this;
+        $('.select-country ul li a').on('click', function(){
+            var country = $(this).html();
+            $('.select-country button').html(country + ' <span class="caret">');
+            $('.user-info .country').html(country);
+            player.region($(this).text());
+        });
+        $('.select-avatar .avatar').on('click', function(){
+            $('.select-avatar .avatar').removeClass('active');
+            $(this).addClass('active');
+            var avatar = $(this).data("avatar");
+            player.avatar(avatar);
+            $('.user-info .avatar').attr('class', 'avatar').addClass(avatar);
+        });
+    }
+    
     function View(game) {
         var self = this;
         $(".game-move-complete").click(function() {
@@ -18,15 +35,14 @@ define(["jquery"], function($) {
         };
 
         this.renderMoveNumber = function() {
-            $(".game-move-number").text(game.moveNumber());
+            $(".game-move-number").removeClass('active').eq(game.moveNumber() - 1).addClass('active');
         };
 
         this.renderResources = function() {
-            $(".game-state-money").text(game.resources.money);
-            $(".game-state-energy").text(game.resources.energy);
-            $(".game-state-food").text(game.resources.food);
-            $(".game-state-water").text(game.resources.water);
-            $(".game-state-dioxide").text(game.resources.dioxide);
+            //['money', 'energy', 'food', 'water', 'dioxide'] => game.availableResources()
+            $.each(['money', 'energy', 'food', 'water', 'dioxide'], function(index, resource){
+                $(".game-state-" + resource).text(game.resources[resource]);
+            });
         };
 
         this.renderCards = function() {
@@ -96,32 +112,38 @@ define(["jquery"], function($) {
             return template;
         };
 
-        this.gameOver = function(event) {
+        this.gameOver = function(event, history) {
             $(".game-screen").hide();
             $(".game-result-screen").removeClass("hidden");
 
             var resultText;
             var resultClass;
             if (event.result === "lose") {
-                resultText = "You lost";
+                resultText = t("You lost");
                 resultClass = "alert-danger";
             } else {
-                resultText = "You won!!!";
+                resultText = t("You won!!!");
                 resultClass = "alert-success";
             }
-            $(".game-result").text(resultText).addClass(resultClass);
+            var resourceHTML = '<br />';
+            for (var key in game.resources) {
+                resourceHTML += '<label>' + t(key.capitalize()) + '</label>: ' + game.resources[key] + '<br />';
+            }
+            $(".game-result").html(resultText).addClass(resultClass);
 
             if (event.reason) {
-                $(".game-result-reason").text(event.reason).addClass(resultClass);
+                $(".game-result-reason").html(event.reason + resourceHTML).addClass(resultClass);
             }
         };
 
         this.showDisasterNotification = function(event) {
             var disaster = event.disaster;
-            $(".game-disaster-name").text(disaster.name());
-            $(".game-disaster-description").text(disaster.description());
-            var disasterViewClass = (event.disaster.type() === "bad") ? " alert-danger" :  "alert-success";
-            $(".game-disaster").addClass(disasterViewClass).show();
+            var disasterViewClass = (disaster.type() === "bad") ? " alert-danger" :  "alert-success";         
+            var modalWindow = '<div style="background:url(static/images/'+disaster.image()+') no-repeat 0 0;background-size: 100% 100%;" class="modal fade '+disasterViewClass+'" id="modalWindow" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>';
+            modalWindow += '<h4 class="modal-title">'+disaster.name()+'</h4></div><div class="modal-body">' + disaster.description();
+            modalWindow += '</div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div></div></div></div>';
+            $('body').append(modalWindow);
+            $('#modalWindow').modal();
         };
 
         this.onFinishMove = function(event) {
@@ -138,7 +160,9 @@ define(["jquery"], function($) {
         };
 
     }    
-
-    return {View: View};
+    String.prototype.capitalize = function() {
+        return this.charAt(0).toUpperCase() + this.slice(1);
+    }
+    return {View: View, Welcome: Welcome};
 
 });

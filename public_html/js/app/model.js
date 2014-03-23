@@ -180,6 +180,10 @@ define([], function() {
         this.effect = function(game) {
             return disaster.effect.call(disaster, game);
         };
+        
+        this.image = function() {
+            return disaster.image;
+        };
     }
 
     function Game(options) {
@@ -189,6 +193,7 @@ define([], function() {
         var move;
         var gameOver = false;
         var movesCompleted = [];
+        var player;
 
         var disasters = [];
         var rules = [];
@@ -214,6 +219,8 @@ define([], function() {
                     deck.putCard((options.cards[cardKey]));
                 }
             }
+
+            player = options.player;
         };
 
 
@@ -223,10 +230,10 @@ define([], function() {
 
         this.resources = {
             money: 1000,
-            energy: 20,
-            water: 20,
-            food: 30,
-            dioxide: 5
+            energy: 40,
+            water: 60,
+            food: 50,
+            dioxide: 40
         };
 
         this.start = function() {
@@ -245,6 +252,10 @@ define([], function() {
         };
 
         this.completeMove = function() {
+            if (this.moveNumber() > 4 && !gameOver) {
+                this.win(t("You won!!!"));
+                return;
+            }
             applyCards();
             checkDisasters();
             checkRules();
@@ -307,14 +318,28 @@ define([], function() {
             }
         };
 
+        function snapshot(result, reason){
+            return {
+                resources: self.resources,
+                result: result,
+                reason: reason,
+                player: {
+                    name: player.name(),
+                    avatar: player.avatar(),
+                    region: player.region()
+                },
+                move: self.moveNumber()
+            };
+        }
+
         this.lose = function(reason) {
-            gameOver = true;
-            notify("onGameOver", {result: "lose", reason: reason});
+            gameOver = true;            
+            notify("onGameOver", {result: "lose", reason: reason, snapshot: snapshot("lose", reason)});
         };
 
         this.win = function(reason) {
             gameOver = true;
-            notify("onGameOver", {result: "win", reason: reason});
+            notify("onGameOver", {result: "win", reason: reason, snapshot: snapshot("win", reason)});
         };
 
         this.addListener = function(listener) {
@@ -358,6 +383,7 @@ define([], function() {
         };
     }
 
+
     function Rule(rule) {
 
         this.isApplicable = function(game) {
@@ -369,6 +395,34 @@ define([], function() {
         };
     }
 
+    function Player(name, avatar, region){
+        var _name = name,
+            _avatar = avatar,
+            _region = region;
+
+        this.name = function(newName){
+            if (newName){
+                _name = newName;
+            }
+            return _name;
+        };
+
+        this.avatar = function(newAvatar){
+            if (newAvatar){
+                _avatar = newAvatar;
+            }
+            return _avatar;
+        };
+
+        this.region = function(newRegion){
+            if (newRegion){
+                _region = newRegion;
+            }
+            return _region;
+        };
+
+    }
+
     return {
         Card: Card,
         Deck: Deck,
@@ -377,7 +431,8 @@ define([], function() {
         Disaster: Disaster,
         Rule: Rule,
         Effect: Effect,
-        WeightedValueCalculator: WeightedValueCalculator
+        WeightedValueCalculator: WeightedValueCalculator,
+        Player: Player
     };
 });
 

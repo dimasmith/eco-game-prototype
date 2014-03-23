@@ -33,9 +33,9 @@ body {
 }
 /* line 34, C:\Users\Dmytro\Documents\NetBeansProjects\GameProto\public_html\less\game.less */
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Dmytro\/Documents\/NetBeansProjects\/GameProto\/public_html\/less\/game\.less}line{font-family:\0000334}}
-.score-bar ul li {
+.score-bar ul li.score-item {
   border: 1px solid #a9a9a9;
-  padding: 10px;
+  padding: 7px;
   border-radius: 5px;
   display: inline-block;
   font-weight: bold;
@@ -116,6 +116,7 @@ body {
 .controls {
 	/*clear: both;*/
 	text-align: center;
+	margin-bottom: 5px;
 }
 .game-state-dioxide.badge {
 	background-color: #000;
@@ -163,8 +164,75 @@ body {
 .rating-desc .progress .progress-bar { width: 100%;}
 /*  End Of NewCards  */
 
+.game-move-number.badge.active {
+	background-color: #428BCA;
+}
 
 /*Temporary hide description, until delete it from function*/
 .card-description {
 	display: none;
+}
+
+.game-screen {display:none;}
+.avatar {
+	width: 141px;
+	height: 141px;
+	margin: 0 auto 20px auto;
+}
+.avatar.active {
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6);
+	border-color: #66AFE9;
+}
+.user-info .avatar {
+	margin-bottom: 0;
+	width: 70px;
+	height: 70px;
+	background-size: 100% 100% !important;
+}
+.avatar.av-1 {
+	background: url(../static/images/av1.png) no-repeat center center;
+}
+.avatar.av-2 {
+	background: url(../static/images/av2.png) no-repeat center center;
+}
+.avatar.av-3 {
+	background: url(../static/images/av3.png) no-repeat center center;
+}
+.avatar.av-4 {
+	background: url(../static/images/av4.png) no-repeat center center;
+}
+.avatar.av-5 {
+	background: url(../static/images/av5.png) no-repeat center center;
+}
+.avatar.av-6 {
+	background: url(../static/images/av6.png) no-repeat center center;
+}
+.select-country {
+	display: inline-block;
+}
+.dropdown ul li {
+	text-align: left;
+}
+
+.input-group.username {
+	margin-bottom: 10px;
+}
+
+#starting.preload {
+	background-image: url(../static/images/preload.gif);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+#starting.preload > .row {
+	visibility: hidden;
+}
+.game-move-complete {
+	position: relative;
+	z-index: 1;
+}
+.foot-logo {
+	max-height: 50px;
+}
+.foot-logos {
+	max-width: 480px;
 }
